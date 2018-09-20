@@ -8,25 +8,24 @@ module.exports = (env, argv) => {
   
   const fileLoaderNameOptions = (file) => {
     if (argv.mode === "development") {
-      return "assets/[name].[ext]"; // [path][name].[ext]
+      return "[path][name].[ext]";
     }
-    return "assets/[hash].[ext]";
+    return "[path][hash].[ext]";
   }
 
   return {
-    // stats: "verbose", // https://webpack.js.org/configuration/stats/
+    // See: https://webpack.js.org/configuration/stats/
+    // stats: "verbose",
     entry: {
       main: "./src/index.js"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].js" // [name].[chunkhash].js
+      filename: argv.mode === "development" ? "[name].js" : "[name].[chunkhash].js"
     },
     // See: https://webpack.js.org/configuration/resolve
     resolve: {
-      // modules: ["node_modules/tgam-patterns"],
       alias: {
-        // "~": path.resolve(__dirname, "node_modules/tgam-patterns/")
         "./tgam": path.resolve(__dirname, "node_modules/tgam-patterns/assets")
       }
     },
@@ -70,20 +69,6 @@ module.exports = (env, argv) => {
                 // strict: true
               }
             },
-            // {
-            //   loader: "resolve-url-loader",
-            //   options: {
-            //     debug: true,
-            //     // root: "",
-            //     // join: new Function("require", process.env.LOADER_JOIN)(require)
-            //     // join: function(uri, base) {
-            //     //   // console.log(uri);
-            //     //   // console.log(base);
-            //     //   // console.log("--------------");
-            //     //   return uri.replace("~assets", "foobar");
-            //     // }
-            //   }
-            // },
             {
               loader: "sass-loader",
               options: {
@@ -116,7 +101,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin("dist", {}),
       new MiniCssExtractPlugin({
-        filename: "style.css", // style.[contenthash].css
+        filename: argv.mode === "development" ? "style.css" : "style.[contenthash].css"
       }),
       // new HtmlWebpackPlugin({
       //   inject: false,
