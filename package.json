@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "prod": "npm run webpack -- --mode production",
+    "dev": "npm run webpack -- --mode development --watch"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +15,7 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "tgam-patterns": "^3.0.17",
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
   }
 }
