@@ -1,11 +1,31 @@
+<!doctype html>
 <html>
   <head>
+    <title>Sample app</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sample app">
     <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
   </head>
   <body>
-    <div id="container">
-      <span id="scss">A "Hello, world!" from .scss!</span>
-    </div>
+    <h1>My sample app</h1>
+
+    <form class="c-form">
+      <fieldset class="c-form__fieldset">
+        <legend class="c-form__legend">Sample form</legend>
+        <div class="c-form__field c-form__field--checkbox">
+          <div class="c-form__field-inner">
+            <input id="my-checkbox" type="checkbox" value="yes" class="c-form__control c-form__control--checkbox">
+            <label for="my-checkbox" class="c-form__label">Checkbox</label>
+          </div>
+        </div>
+        <div class="c-fundata-reports">
+          <h3 class="c-fundata-reports__heading">Fundata reports</h3>
+        </div>
+      </fieldset>
+    </form>
+
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
   </body>
 </html>
