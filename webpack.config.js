@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
     loader: "file-loader",
     options: {
       // Transform the resolved asset file path
-      regExp: /\/panther-nuxt\/assets\/([^.]+)(.+)/,
+      regExp: /\/node_modules\/tgam-patterns\/assets\/([^.]+)(.+)/,
       name: (file) => {
         return argv.mode === "development" ? "resources/[1][2]" : "resources/[1]-[hash][2]";
       }
