@@ -19,8 +19,6 @@ module.exports = (env, argv) => {
   };
 
   return {
-    // See: https://webpack.js.org/configuration/stats/
-    // stats: "verbose",
     entry: {
       main: "./src/index.js"
     },
@@ -28,17 +26,15 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, "dist"),
       filename: argv.mode === "development" ? "[name].js" : "[name]-[chunkhash].js"
     },
-    // See: https://webpack.js.org/configuration/resolve
     resolve: {
       alias: {
         // Once "string-replace-loader" has run, the asset paths will start
         // with "./tgam" instead of "~assets", so we'll need to make them
-        // resolve properly
+        // resolve properly. See: https://webpack.js.org/configuration/resolve
         "./tgam": path.resolve(__dirname, "node_modules/tgam-patterns/assets")
       }
     },
     module: {
-      // devtool: "source-map",
       rules: [
         {
           test: /\.js$/,
