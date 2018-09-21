@@ -1,16 +1,16 @@
-@import "~tgam-patterns/assets/stylesheets/generic";
+@import "~tgam-patterns/assets/patterns/stylesheets/generic";
 
-@import "~tgam-patterns/assets/stylesheets/base";
+@import "~tgam-patterns/assets/patterns/stylesheets/base";
 
-@import "~tgam-patterns/assets/stylesheets/components.button";
-@import "~tgam-patterns/assets/stylesheets/components.form";
+@import "~tgam-patterns/assets/patterns/stylesheets/components.button";
+@import "~tgam-patterns/assets/patterns/stylesheets/components.form";
 
-@import "~tgam-patterns/assets/stylesheets/components.fundata-reports";
+@import "~tgam-patterns/assets/patterns/stylesheets/components.fundata-reports";
 
 @import "./partial";
 
 .c-form {
-  background-image: url("~tgam-patterns/assets/images/piano-regwall-photo.jpg");
+  background-image: url("~tgam-patterns/assets/patterns/images/piano-regwall-photo.jpg");
 }
 
 .bar {
