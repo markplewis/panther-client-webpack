@@ -1,17 +1,22 @@
 const path = require("path");
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = (env, argv) => {
   
-  const fileLoaderNameOptions = (file) => {
-    if (argv.mode === "development") {
-      return "[path][name].[ext]";
+  const fileLoaderConfig = {
+    loader: "file-loader",
+    options: {
+      // Transform the resolved asset file path
+      regExp: /\/panther-nuxt\/assets\/([^.]+)(.+)/,
+      name: (file) => {
+        return argv.mode === "development" ? "resources/[1][2]" : "resources/[1]-[hash][2]";
+      }
+      // name: "[path][name].[ext]"
+      // context: path.resolve(__dirname, "node_modules/tgam-patterns")
     }
-    return "[path][hash].[ext]";
-  }
+  };
 
   return {
     // See: https://webpack.js.org/configuration/stats/
@@ -21,11 +26,14 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: argv.mode === "development" ? "[name].js" : "[name].[chunkhash].js"
+      filename: argv.mode === "development" ? "[name].js" : "[name]-[chunkhash].js"
     },
     // See: https://webpack.js.org/configuration/resolve
     resolve: {
       alias: {
+        // Once "string-replace-loader" has run, the asset paths will start
+        // with "./tgam" instead of "~assets", so we'll need to make them
+        // resolve properly
         "./tgam": path.resolve(__dirname, "node_modules/tgam-patterns/assets")
       }
     },
@@ -44,72 +52,46 @@ module.exports = (env, argv) => {
           use: [
             "style-loader",
             MiniCssExtractPlugin.loader,
-            // {
-            //   loader: MiniCssExtractPlugin.loader,
-            //   // options: {
-            //   //   publicPath: "./node_modules/tgam-patterns/"
-            //   // }
-            // },
             {
               loader: "css-loader",
-              options: {
-                sourceMap: true
-                // url: false
-                // importLoaders: 3
-              }
+              options: { sourceMap: true }
             },
             "postcss-loader",
             {
               loader: "string-replace-loader",
               options: {
                 search: "~assets", 
-                // replace: path.resolve(__dirname, "node_modules/tgam-patterns/assets"),
                 replace: "tgam",
-                flags: "g",
-                // strict: true
+                flags: "g"
               }
             },
             {
               loader: "sass-loader",
-              options: {
-                sourceMap: true
-              }
+              options: { sourceMap: true }
             }
           ]
         },
         {
           test: /\.(png|jpe?g|gif|svg|webp)$/,
-          use: [{
-            loader: "file-loader",
-            options: {
-              // context: path.resolve(__dirname, "node_modules/tgam-patterns")
-              name: fileLoaderNameOptions
-            }
-          }]
+          use: fileLoaderConfig
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-          use: [{
-            loader: "file-loader",
-            options: {
-              name: fileLoaderNameOptions
-            }
-          }]
+          use: fileLoaderConfig
         }
       ]
     },
     plugins: [
       new CleanWebpackPlugin("dist", {}),
       new MiniCssExtractPlugin({
-        filename: argv.mode === "development" ? "style.css" : "style.[contenthash].css"
+        filename: argv.mode === "development" ? "style.css" : "style-[contenthash].css"
       }),
       // new HtmlWebpackPlugin({
       //   inject: false,
       //   hash: true,
       //   template: "./src/index.html",
       //   filename: "index.html"
-      // }),
-      // new WebpackMd5Hash()
+      // })
     ]
   }
 };
