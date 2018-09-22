@@ -9,9 +9,17 @@ module.exports = (env, argv) => {
     loader: "file-loader",
     options: {
       // Transform the resolved asset file path
-      regExp: /\/node_modules\/tgam-patterns\/assets\/patterns\/([^.]+)(.+)/,
+      // regExp: /\/node_modules\/tgam-patterns\/assets\/patterns\/([^.]+)/,
       name: (file) => {
-        return argv.mode === "development" ? "resources/[1][2]" : "resources/[1]-[hash][2]";
+        // return argv.mode === "development" ? "resources/[1].[ext]" : "resources/[1]-[hash].[ext]";
+        const pieces = file.replace(__dirname, "").replace("/node_modules/tgam-patterns/assets/patterns", "/tgam-patterns").split(".");
+        pieces.pop();
+        let trimmed = pieces.join(".");
+        if (trimmed.startsWith("/")) {
+          // Remove leading slash
+          trimmed = trimmed.substr(1, trimmed.length);
+        }
+        return argv.mode === "development" ? `resources/${trimmed}.[ext]` : `resources/${trimmed}-[hash].[ext]`;
       }
       // name: "[path][name].[ext]"
       // context: path.resolve(__dirname, "node_modules/tgam-patterns")
@@ -28,6 +36,7 @@ module.exports = (env, argv) => {
     },
     resolve: {
       alias: {
+        "panther": "tgam-patterns/assets/patterns",
         // Once "string-replace-loader" has run, the asset paths will start
         // with "./tgam" instead of "~assets", so we'll need to make them
         // resolve properly. See: https://webpack.js.org/configuration/resolve

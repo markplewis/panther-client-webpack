@@ -1,18 +1,22 @@
-@import "~tgam-patterns/assets/patterns/stylesheets/generic";
+@import "~panther/stylesheets/generic";
 
-@import "~tgam-patterns/assets/patterns/stylesheets/base";
+@import "~panther/stylesheets/base";
 
-@import "~tgam-patterns/assets/patterns/stylesheets/components.button";
-@import "~tgam-patterns/assets/patterns/stylesheets/components.form";
+@import "~panther/stylesheets/components.button";
+@import "~panther/stylesheets/components.form";
 
-@import "~tgam-patterns/assets/patterns/stylesheets/components.fundata-reports";
+@import "~panther/stylesheets/components.fundata-reports";
 
 @import "./partial";
 
 .c-form {
-  background-image: url("~tgam-patterns/assets/patterns/images/piano-regwall-photo.jpg");
+  background-image: url("~panther/images/piano-regwall-photo.jpg");
 }
 
 .bar {
   color: purple;
+}
+
+.test-div {
+  background-image: url("../images/cat.jpg");
 }
