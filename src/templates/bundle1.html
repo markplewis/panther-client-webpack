@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sample app">
-    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.bundle1.css %>">
   </head>
   <body>
     <h1>My sample app</h1>
@@ -28,6 +28,6 @@
 
     <div class="test-div">Test</div>
 
-    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.bundle1.entry %>"></script>
   </body>
 </html>

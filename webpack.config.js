@@ -31,8 +31,8 @@ module.exports = (env, argv) => {
     // See: https://webpack.js.org/configuration/stats/
     // stats: "verbose",
     entry: {
-      main: "./src/main.js",
-      bundle2: "./src/bundle2.js"
+      "bundle1": "./src/js/bundle1.js",
+      "bundle2": "./src/js/bundle2.js"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -86,12 +86,26 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(png|jpe?g|gif|svg|webp)$/,
+          // test: /\.(png|jpe?g|gif|webp)$/,
           use: fileLoaderConfig
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           use: fileLoaderConfig
-        }
+        },
+        // {
+        //   test: /\.svg$/,
+        //   include: [
+        //     path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images/**/*.svg")
+        //   ],
+        //   use: {
+        //     loader: "external-svg-sprite-loader",
+        //     options: {
+        //       name: "resources/sprite.svg",
+        //       iconName: "[name]-[hash:5]"
+        //     }
+        //   }
+        // }
       ]
     },
     plugins: [
@@ -104,13 +118,13 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         inject: false,
         hash: false,
-        template: "./src/index.html",
-        filename: "index.html"
+        template: "./src/templates/bundle1.html",
+        filename: "bundle1.html"
       }),
       new HtmlWebpackPlugin({
         inject: false,
         hash: false,
-        template: "./src/bundle2.html",
+        template: "./src/templates/bundle2.html",
         filename: "bundle2.html"
       })
     ]
