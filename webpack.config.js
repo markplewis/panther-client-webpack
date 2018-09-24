@@ -2,6 +2,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const SvgStorePlugin = require("external-svg-sprite-loader/lib/SvgStorePlugin");
 
 module.exports = (env, argv) => {
   
@@ -85,27 +86,26 @@ module.exports = (env, argv) => {
           ]
         },
         {
-          test: /\.(png|jpe?g|gif|svg|webp)$/,
-          // test: /\.(png|jpe?g|gif|webp)$/,
+          test: /\.(png|jpe?g|gif|webp)$/,
           use: fileLoaderConfig
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           use: fileLoaderConfig
         },
-        // {
-        //   test: /\.svg$/,
-        //   include: [
-        //     path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images/**/*.svg")
-        //   ],
-        //   use: {
-        //     loader: "external-svg-sprite-loader",
-        //     options: {
-        //       name: "resources/sprite.svg",
-        //       iconName: "[name]-[hash:5]"
-        //     }
-        //   }
-        // }
+        {
+          test: /\.svg$/,
+          // include: [
+          //   path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images/**/*.svg")
+          // ],
+          use: {
+            loader: "external-svg-sprite-loader",
+            options: {
+              name: "resources/sprite.svg",
+              iconName: "[name]-[hash:5]"
+            }
+          }
+        }
       ]
     },
     plugins: [
@@ -126,7 +126,8 @@ module.exports = (env, argv) => {
         hash: false,
         template: "./src/templates/bundle2.html",
         filename: "bundle2.html"
-      })
+      }),
+      new SvgStorePlugin()
     ]
   }
 };
