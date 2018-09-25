@@ -97,28 +97,22 @@ module.exports = (env, argv) => {
         {
           test: /\.svg$/,
           include: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
-          exclude: path.resolve(__dirname, "src/images"),
           use: {
             loader: "external-svg-sprite-loader",
             options: {
               name: "tgam-patterns/svgs/sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
-              // name: argv.mode === "development" ? "tgam-patterns/svgs/sprite.svg" : "tgam-patterns/svgs/sprite-[hash].svg",
-              // iconName: "[name]-[hash:5]"
             }
           }
         },
         {
           test: /\.svg$/,
           include: path.resolve(__dirname, "src/images"),
-          exclude: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
           use: {
             loader: "external-svg-sprite-loader",
             options: {
               name: "svgs/sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
-              // name: argv.mode === "development" ? "svgs/sprite.svg" : "svgs/sprite-[hash].svg",
-              // iconName: "[name]-[hash:5]"
             }
           }
         }
