@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "http-server ./dist",
     "webpack": "webpack",
-    "dev": "npm run webpack -- --mode development",
     "prod": "npm run webpack -- --mode production",
+    "dev": "npm run webpack -- --mode development",
     "dev:watch": "npm run webpack -- --mode development --watch",
-    "dev:serve": "npm run dev && npm run serve",
-    "prod:serve": "npm run prod && npm run serve"
+    "serve": "http-server ./dist",
+    "serve:prod": "npm run prod && npm run serve",
+    "serve:dev": "npm run dev && npm run serve"
   },
   "author": "",
   "license": "ISC",

@@ -1,1 +1,1 @@
-Run `npm run dev:serve` or `npm run :serve`
+Run `npm run serve:dev` or `npm run serve:prod`
