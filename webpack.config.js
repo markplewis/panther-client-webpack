@@ -5,26 +5,26 @@ const path = require("path");
 const SvgStorePlugin = require("external-svg-sprite-loader/lib/SvgStorePlugin");
 
 module.exports = (env, argv) => {
-  
+
+  // Rewrite the resolved asset file path and tell Webpack where to save the files
   const fileLoaderConfig = {
     loader: "file-loader",
     options: {
-      // Rewrite the resolved asset file path and tell Webpack where to save the files
-      // regExp: /\/node_modules\/tgam-patterns\/assets\/patterns\/([^.]+)/,
       name: file => {
-        // return argv.mode === "development" ? "resources/[1].[ext]" : "resources/[1]-[hash].[ext]";
-        const pieces = file.replace(__dirname, "").replace("/node_modules/tgam-patterns/assets/patterns", "/tgam-patterns").split(".");
-        pieces.pop();
-        const trimmed = pieces.join(".");
-        // let trimmed = pieces.join(".");
-        // if (trimmed.startsWith("/")) {
-        //   trimmed = trimmed.substr(1, trimmed.length); // Remove leading slash
-        // }
-        // return argv.mode === "development" ? `resources/${trimmed}.[ext]` : `resources/${trimmed}-[hash].[ext]`;
-        return argv.mode === "development" ? `resources${trimmed}.[ext]` : `resources${trimmed}-[hash].[ext]`;
+        let pieces;
+        let trimmed;
+        if (file.includes("/node_modules/tgam-patterns/assets/patterns/")) {
+          pieces = file.replace(path.join(__dirname, "node_modules/tgam-patterns/assets/patterns/"), "").split(".");
+          pieces.pop();
+          trimmed = pieces.join(".");
+          return argv.mode === "development" ? `tgam-patterns/${trimmed}.[ext]` : `tgam-patterns/${trimmed}-[hash].[ext]`;
+        } else {
+          pieces = file.replace(path.join(__dirname, "src/"), "").split(".");
+          pieces.pop();
+          trimmed = pieces.join(".");
+          return argv.mode === "development" ? `${trimmed}.[ext]` : `${trimmed}-[hash].[ext]`;
+        }
       }
-      // name: "[path][name].[ext]"
-      // context: path.resolve(__dirname, "node_modules/tgam-patterns")
     }
   };
 
@@ -32,12 +32,13 @@ module.exports = (env, argv) => {
     // See: https://webpack.js.org/configuration/stats/
     // stats: "verbose",
     entry: {
-      "bundle1": "./src/js/bundle1.js",
-      "bundle2": "./src/js/bundle2.js"
+      "bundle1": path.join(__dirname, "src/js/bundle1.js"),
+      "bundle2": path.join(__dirname, "src/js/bundle2.js"),
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: argv.mode === "development" ? "[name].js" : "[name]-[chunkhash].js"
+      publicPath: "/",
+      filename: argv.mode === "development" ? "js/[name].js" : "js/[name]-[chunkhash].js"
     },
     // See: https://webpack.js.org/configuration/resolve
     resolve: {
@@ -95,33 +96,29 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.svg$/,
-          include: [
-            path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images")
-          ],
-          exclude: [
-            path.resolve(__dirname, "src/images")
-          ],
+          include: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
+          exclude: path.resolve(__dirname, "src/images"),
           use: {
             loader: "external-svg-sprite-loader",
             options: {
-              name: "resources/tgam-patterns/sprite.svg",
-              iconName: "[name]-[hash:5]"
+              name: "tgam-patterns/svgs/sprite.svg",
+              iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
+              // name: argv.mode === "development" ? "tgam-patterns/svgs/sprite.svg" : "tgam-patterns/svgs/sprite-[hash].svg",
+              // iconName: "[name]-[hash:5]"
             }
           }
         },
         {
           test: /\.svg$/,
-          include: [
-            path.resolve(__dirname, "src/images")
-          ],
-          exclude: [
-            path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images")
-          ],
+          include: path.resolve(__dirname, "src/images"),
+          exclude: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
           use: {
             loader: "external-svg-sprite-loader",
             options: {
-              name: "resources/src/sprite.svg",
-              iconName: "[name]-[hash:5]"
+              name: "svgs/sprite.svg",
+              iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
+              // name: argv.mode === "development" ? "svgs/sprite.svg" : "svgs/sprite-[hash].svg",
+              // iconName: "[name]-[hash:5]"
             }
           }
         }
@@ -130,7 +127,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin("dist", {}),
       new MiniCssExtractPlugin({
-        filename: argv.mode === "development" ? "[name].css" : "[name]-[contenthash].css"
+        filename: argv.mode === "development" ? "css/[name].css" : "css/[name]-[contenthash].css"
       }),
       // Could use this to make things more dynamic:
       // https://github.com/mutualofomaha/multipage-webpack-plugin

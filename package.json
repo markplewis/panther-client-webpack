@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server ./dist",
     "webpack": "webpack",
-    "prod": "npm run webpack -- --mode production",
     "dev": "npm run webpack -- --mode development",
-    "dev-watch": "npm run webpack -- --mode development --watch"
+    "prod": "npm run webpack -- --mode production",
+    "dev:watch": "npm run webpack -- --mode development --watch",
+    "dev:serve": "npm run dev && npm run serve",
+    "prod:serve": "npm run prod && npm run serve"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +25,7 @@
     "external-svg-sprite-loader": "^3.4.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",

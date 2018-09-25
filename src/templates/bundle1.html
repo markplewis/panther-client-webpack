@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sample app">
-    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.bundle1.css %>">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.bundle1.css %>">
   </head>
   <body>
     <h1>My sample app</h1>
@@ -14,16 +14,16 @@
     <div class="test-element"></div>
 
     <svg role="img" width="40" height="40">
-      <use :xlink:href="../images/icon-anchor.svg"></use>
+      <use xlink:href="<%= require('../images/icon-anchor.svg').symbol %>"></use>
     </svg>
     <svg role="img" width="40" height="40">
-      <use :xlink:href="../images/icon-code.svg"></use>
+      <use xlink:href="<%= require('../images/icon-code.svg').symbol %>"></use>
     </svg>
     <svg role="img" width="40" height="40">
-      <use :xlink:href="../images/icon-enlarge.svg"></use>
+      <use xlink:href="<%= require('../images/icon-enlarge.svg').symbol %>"></use>
     </svg>
     <svg role="img" width="40" height="40">
-      <use :xlink:href="../images/icon-gear.svg"></use>
+      <use xlink:href="<%= require('../images/icon-gear.svg').symbol %>"></use>
     </svg>
 
     <form class="c-form">
