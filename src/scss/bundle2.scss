@@ -1,35 +1,41 @@
-@import "~panther/stylesheets/generic";
+@import "~tgam/stylesheets/generic";
 
-@import "~panther/stylesheets/base";
+@import "~tgam/stylesheets/base";
 
-@import "~panther/stylesheets/components.button";
+@import "~tgam/stylesheets/components.button";
 
 @font-face {
   font-family: "OpenSans-Regular";
-  src: url("../fonts/opensans-regular.ttf") format("ttf");
+  src: url("../fonts/opensans-regular.ttf") format("opentype");
   font-display: swap;
 }
 @font-face {
   font-family: "OpenSans-Bold";
-  src: url("../fonts/opensans-bold.ttf") format("ttf");
+  src: url("../fonts/opensans-bold.ttf") format("opentype");
   font-display: swap;
 }
 @font-face {
   font-family: "OpenSans-Italic";
-  src: url("../fonts/opensans-italic.ttf") format("ttf");
+  src: url("../fonts/opensans-italic.ttf") format("opentype");
   font-display: swap;
 }
 @font-face {
   font-family: "Notable-Regular";
-  src: url("../fonts/subdirectory/notable-regular.ttf") format("ttf");
+  src: url("../fonts/subdirectory/notable-regular.ttf") format("opentype");
   font-display: swap;
+}
+
+body {
+  background-color: aqua;
+}
+
+h1 {
+  font-family: "Notable-Regular", Courier, monospace;
+  font-weight: normal;
+  font-style: normal;
 }
 
 .loader-icon {
   width: 40px;
   height: 40px;
-}
-
-body {
-  background-color: aqua;
 }

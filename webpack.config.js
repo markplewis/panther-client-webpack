@@ -44,11 +44,11 @@ module.exports = (env, argv) => {
     resolve: {
       alias: {
         // Make it easier to @import tgam-patterns styles into this project's SASS files
-        "panther": "tgam-patterns/assets/patterns",
+        "tgam": "tgam-patterns/assets/patterns",
         // Once "string-replace-loader" has run, the asset paths will start
-        // with "./tgam" instead of "~assets/patterns", so we'll need to make
-        // them resolve properly
-        "./tgam": path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns")
+        // with "./tgam-replaced" instead of "~assets/patterns", so we'll need
+        // to make them resolve properly
+        "./tgam-replaced": path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns")
       }
     },
     module: {
@@ -76,7 +76,7 @@ module.exports = (env, argv) => {
               loader: "string-replace-loader",
               options: {
                 search: "~assets/patterns", 
-                replace: "tgam",
+                replace: "tgam-replaced",
                 flags: "g"
               }
             },
@@ -133,7 +133,7 @@ module.exports = (env, argv) => {
           use: {
             loader: "external-svg-sprite-loader",
             options: {
-              name: "svgs/custon-sprite.svg",
+              name: "svgs/custom-sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
             }
           }

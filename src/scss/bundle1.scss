@@ -1,16 +1,16 @@
-@import "~panther/stylesheets/generic";
+@import "~tgam/stylesheets/generic";
 
-@import "~panther/stylesheets/base";
+@import "~tgam/stylesheets/base";
 
-@import "~panther/stylesheets/components.button";
-@import "~panther/stylesheets/components.form";
+@import "~tgam/stylesheets/components.button";
+@import "~tgam/stylesheets/components.form";
 
-@import "~panther/stylesheets/components.fundata-reports";
+@import "~tgam/stylesheets/components.fundata-reports";
 
 @import "./partial";
 
 .c-form {
-  background-image: url("~panther/images/piano-regwall-photo.jpg");
+  background-image: url("~tgam/images/piano-regwall-photo.jpg");
 }
 .bar {
   color: purple;
