@@ -108,10 +108,32 @@ module.exports = (env, argv) => {
         {
           test: /\.svg$/,
           include: path.resolve(__dirname, "src/images"),
+          // In order to include these files below, they must be excluded here
+          exclude: [
+            path.resolve(__dirname, "src/images/icon-anchor.svg"),
+            path.resolve(__dirname, "src/images/icon-code.svg"),
+            path.resolve(__dirname, "src/images/icon-gear.svg"),
+          ],
           use: {
             loader: "external-svg-sprite-loader",
             options: {
               name: "svgs/sprite.svg",
+              iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
+            }
+          }
+        },
+        {
+          test: /\.svg$/,
+          // In order to include these files here, they must be excluded above
+          include: [
+            path.resolve(__dirname, "src/images/icon-anchor.svg"),
+            path.resolve(__dirname, "src/images/icon-code.svg"),
+            path.resolve(__dirname, "src/images/icon-gear.svg"),
+          ],
+          use: {
+            loader: "external-svg-sprite-loader",
+            options: {
+              name: "svgs/custon-sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
             }
           }
