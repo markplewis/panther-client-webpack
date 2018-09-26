@@ -1,4 +1,5 @@
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
@@ -34,6 +35,7 @@ module.exports = (env, argv) => {
     entry: {
       "bundle1": path.join(__dirname, "src/js/bundle1.js"),
       "bundle2": path.join(__dirname, "src/js/bundle2.js"),
+      "bundle3": path.join(__dirname, "src/scss/bundle3.scss"),
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -150,16 +152,21 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         inject: false,
         hash: false,
-        template: "./src/templates/bundle1.html",
-        filename: "bundle1.html"
+        template: "./src/templates/page1.html",
+        filename: "page1.html"
       }),
       new HtmlWebpackPlugin({
         inject: false,
         hash: false,
-        template: "./src/templates/bundle2.html",
-        filename: "bundle2.html"
+        template: "./src/templates/page2.html",
+        filename: "page2.html"
       }),
-      new SvgStorePlugin()
+      new SvgStorePlugin(),
+      new CopyWebpackPlugin([{
+        from: "src/*.html",
+        to: "[name].html",
+        force: true
+      }])
     ]
   }
 };
