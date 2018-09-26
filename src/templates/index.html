@@ -11,12 +11,28 @@
   <body>
     <h1>Page 1</h1>
     <p>
-      <a href="/page1.html">Page 1</a> |
+      <a href="/index.html">Page 1</a> |
       <a href="/page2.html">Page 2</a> |
       <a href="/page3.html">Page 3</a>
     </p>
+    <p>This page was generated via an HtmlWebpackPlugin template.</p>
 
-    <div class="test-element"></div>
+    <p>JPG background image from the local project:</p>
+    <div class="example-background--jpg--local"></div>
+
+    <p>SVG background image from the local project:</p>
+    <div class="example-background--svg--local"></div>
+
+    <p>SVG background image from the local project (inline CSS):</p>
+    <div class="example-background--svg--local--inline" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
+
+    <p>JPG background image from the tgam-patterns module:</p>
+    <div class="example-background--jpg--tgam"></div>
+
+    <p>SVG background image from the tgam-patterns module:</p>
+    <div class="example-background--svg--tgam"></div>
+
+    <p>svg/use elements that pull in sprite symbols from the local project:</p>
 
     <svg role="img" width="40" height="40">
       <use xlink:href="<%= require('../images/icon-anchor.svg').symbol %>"></use>
@@ -31,6 +47,8 @@
       <use xlink:href="<%= require('../images/icon-gear.svg').symbol %>"></use>
     </svg>
 
+    <p>Component from the pattern library:</p>
+
     <form class="c-form">
       <fieldset class="c-form__fieldset">
         <legend class="c-form__legend">Sample form</legend>
@@ -40,13 +58,8 @@
             <label for="my-checkbox" class="c-form__label">Checkbox</label>
           </div>
         </div>
-        <div class="c-fundata-reports">
-          <h3 class="c-fundata-reports__heading">Fundata reports</h3>
-        </div>
       </fieldset>
     </form>
-
-    <div class="test-div">Test</div>
 
     <script src="<%= htmlWebpackPlugin.files.chunks.bundle1.entry %>"></script>
   </body>

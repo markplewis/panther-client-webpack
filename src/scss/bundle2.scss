@@ -24,18 +24,11 @@
   src: url("../fonts/subdirectory/notable-regular.ttf") format("opentype");
   font-display: swap;
 }
-
 body {
   background-color: aqua;
 }
-
 h1 {
   font-family: "Notable-Regular", Courier, monospace;
   font-weight: normal;
   font-style: normal;
-}
-
-.loader-icon {
-  width: 40px;
-  height: 40px;
 }

@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
     entry: {
       "bundle1": path.join(__dirname, "src/js/bundle1.js"),
       "bundle2": path.join(__dirname, "src/js/bundle2.js"),
-      "bundle3": path.join(__dirname, "src/scss/bundle3.scss"),
+      "bundle3": path.join(__dirname, "src/js/bundle3.js")
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -130,8 +130,8 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         inject: false,
         hash: false,
-        template: "./src/templates/page1.html",
-        filename: "page1.html"
+        template: "./src/templates/index.html",
+        filename: "index.html"
       }),
       new HtmlWebpackPlugin({
         inject: false,

@@ -11,29 +11,11 @@
   <body>
     <h1>Page 2</h1>
     <p>
-      <a href="/page1.html">Page 1</a> |
+      <a href="/index.html">Page 1</a> |
       <a href="/page2.html">Page 2</a> |
       <a href="/page3.html">Page 3</a>
     </p>
-
-    <div class="loader-icon" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
-
-    <form class="c-form">
-      <fieldset class="c-form__fieldset">
-        <legend class="c-form__legend">Sample form</legend>
-        <div class="c-form__field c-form__field--checkbox">
-          <div class="c-form__field-inner">
-            <input id="my-checkbox" type="checkbox" value="yes" class="c-form__control c-form__control--checkbox">
-            <label for="my-checkbox" class="c-form__label">Checkbox</label>
-          </div>
-        </div>
-        <div class="c-fundata-reports">
-          <h3 class="c-fundata-reports__heading">Fundata reports</h3>
-        </div>
-      </fieldset>
-    </form>
-
-    <div class="test-div">Test</div>
+    <p>This page was generated via an HtmlWebpackPlugin template.</p>
 
     <script src="<%= htmlWebpackPlugin.files.chunks.bundle2.entry %>"></script>
   </body>
