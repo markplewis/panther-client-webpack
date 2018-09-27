@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sample app">
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.bundle1.css %>">
+    <link rel="stylesheet" href="/css/bundle2.css">
   </head>
   <body>
     <div class="page">
-      <h1>Page 1 <span>(HtmlWebpackPlugin)</span></h1>
+      <h1>Page 2 <span>(standalone)</span></h1>
       <p>
         <a href="/index.html">Page 1</a> |
         <a href="/page2.html">Page 2</a>
       </p>
-      <p>This page was generated via an HtmlWebpackPlugin template.</p>
+      <p>This is a standard, static, standalone page that does not use HtmlWebpackPlugin.</p>
 
       <div class="examples">
         <div class="example-label">
@@ -31,17 +31,17 @@
         <div class="example-label">
           <h2>Local SVG background image (inline CSS)</h2>
         </div>
-        <div class="example-content svg-inline" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
+        <div class="example-content svg-inline" style="background-image: url('/svgs/sprite.svg#view-loader')"></div>
 
         <div class="example-label">
           <h2>Local sprite symbols (svg/use elements)</h2>
         </div>
         <div class="example-content">
           <svg role="img" width="40" height="40">
-            <use xlink:href="<%= require('../images/icon-anchor.svg').symbol %>"></use>
+            <use xlink:href="/svgs/sprite.svg#icon-anchor"></use>
           </svg>
           <svg role="img" width="40" height="40">
-            <use xlink:href="<%= require('../images/icon-code.svg').symbol %>"></use>
+            <use xlink:href="/svgs/sprite.svg#icon-code"></use>
           </svg>
         </div>
 
@@ -58,17 +58,17 @@
         <div class="example-label">
           <h2>tgam-patterns SVG background image (inline CSS)</h2>
         </div>
-        <div class="example-content svg-inline" style="background-image: url(<%= require('tgam/images/icon-snapchat.svg').view %>)"></div>
+        <div class="example-content svg-inline" style="background-image: url('/tgam-patterns/svgs/tgam-sprite.svg#view-icon-snapchat')"></div>
 
         <div class="example-label">
           <h2>tgam-patterns sprite symbols (svg/use elements)</h2>
         </div>
         <div class="example-content">
           <svg role="img" width="40" height="40">
-            <use xlink:href="<%= require('tgam/images/icon-facebook.svg').symbol %>"></use>
+            <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#icon-facebook"></use>
           </svg>
           <svg role="img" width="40" height="40">
-            <use xlink:href="<%= require('tgam/images/icon-twitter.svg').symbol %>"></use>
+            <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#icon-twitter"></use>
           </svg>
         </div>
       </div>
@@ -94,7 +94,7 @@
               <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button">Canada</a>
               <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-0">
                 <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                  <use xlink:href="<%= require('tgam/images/nav-arrow-down.svg').symbol %>"></use>
+                  <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
                 </svg>
               </button>
             </div>
@@ -116,7 +116,7 @@
               <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button">World</a>
               <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-1">
                 <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                  <use xlink:href="<%= require('tgam/images/nav-arrow-down.svg').symbol %>"></use>
+                  <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
                 </svg>
               </button>
             </div>
@@ -137,6 +137,6 @@
       </div>
     </div>
 
-    <script src="<%= htmlWebpackPlugin.files.chunks.bundle1.entry %>"></script>
+    <script src="/js/bundle2.js"></script>
   </body>
 </html>

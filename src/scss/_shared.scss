@@ -2,10 +2,32 @@
 
 @import "~tgam/stylesheets/base";
 
+@import "~tgam/stylesheets/components.accordion";
 @import "~tgam/stylesheets/components.button";
 @import "~tgam/stylesheets/components.form";
 
-$bg-color: seashell;
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../fonts/opensans-regular.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../fonts/opensans-bold.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans-Italic";
+  src: url("../fonts/opensans-italic.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Notable-Regular";
+  src: url("../fonts/subdirectory/notable-regular.ttf") format("opentype");
+  font-display: swap;
+}
+
+$bg-color: linen;
 
 body {
   margin: 20px;
@@ -14,6 +36,10 @@ body {
 h1 span {
   font-size: 14px;
   font-family: Helvetica, Arial, sans-serif;
+}
+.page {
+  max-width: 900px;
+  margin: 0 auto;
 }
 .examples {
   display: grid;

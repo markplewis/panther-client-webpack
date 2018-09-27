@@ -34,8 +34,7 @@ module.exports = (env, argv) => {
     // stats: "verbose",
     entry: {
       "bundle1": path.join(__dirname, "src/js/bundle1.js"),
-      "bundle2": path.join(__dirname, "src/js/bundle2.js"),
-      "bundle3": path.join(__dirname, "src/js/bundle3.js")
+      "bundle2": path.join(__dirname, "src/js/bundle2.js")
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -125,19 +124,12 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: argv.mode === "development" ? "css/[name].css" : "css/[name]-[contenthash].css"
       }),
-      // Could use this to make things more dynamic:
-      // https://github.com/mutualofomaha/multipage-webpack-plugin
+      // Duplicate this whole "new HtmlWebpackPlugin" block to configure a 2nd page
       new HtmlWebpackPlugin({
         inject: false,
         hash: false,
         template: "./src/templates/index.html",
         filename: "index.html"
-      }),
-      new HtmlWebpackPlugin({
-        inject: false,
-        hash: false,
-        template: "./src/templates/page2.html",
-        filename: "page2.html"
       }),
       new SvgStorePlugin(),
       new CopyWebpackPlugin([{
