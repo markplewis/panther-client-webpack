@@ -4,6 +4,8 @@
 
 @import "~tgam/stylesheets/components.button";
 
+@import "./base";
+
 @font-face {
   font-family: "OpenSans-Regular";
   src: url("../fonts/opensans-regular.ttf") format("opentype");
@@ -23,9 +25,6 @@
   font-family: "Notable-Regular";
   src: url("../fonts/subdirectory/notable-regular.ttf") format("opentype");
   font-display: swap;
-}
-body {
-  background-color: aqua;
 }
 h1 {
   font-family: "Notable-Regular", Courier, monospace;

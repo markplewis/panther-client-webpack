@@ -1,1 +1,5 @@
-export default "nav";
+export default {
+  init() {
+    console.log("Nav init");
+  }
+};

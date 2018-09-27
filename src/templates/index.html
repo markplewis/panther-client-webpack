@@ -17,37 +17,59 @@
     </p>
     <p>This page was generated via an HtmlWebpackPlugin template.</p>
 
-    <p>JPG background image from the local project:</p>
-    <div class="example-background--jpg--local"></div>
+    <div class="examples">
+      <div class="example-label">
+        <h2>Local JPG background image</h2>
+      </div>
+      <div class="example-content background--jpg--local"></div>
 
-    <p>SVG background image from the local project:</p>
-    <div class="example-background--svg--local"></div>
+      <div class="example-label">
+        <h2>Local SVG background image</h2>
+      </div>
+      <div class="example-content background--svg--local"></div>
 
-    <p>SVG background image from the local project (inline CSS):</p>
-    <div class="example-background--svg--local--inline" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
+      <div class="example-label">
+        <h2>Local SVG background image (inline CSS)</h2>
+      </div>
+      <div class="example-content background--svg--local--inline" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
 
-    <p>JPG background image from the tgam-patterns module:</p>
-    <div class="example-background--jpg--tgam"></div>
+      <div class="example-label">
+        <h2>Local sprite symbols (svg/use elements)</h2>
+      </div>
+      <div class="example-content">
+        <svg role="img" width="40" height="40">
+          <use xlink:href="<%= require('../images/icon-anchor.svg').symbol %>"></use>
+        </svg>
+        <svg role="img" width="40" height="40">
+          <use xlink:href="<%= require('../images/icon-code.svg').symbol %>"></use>
+        </svg>
+      </div>
 
-    <p>SVG background image from the tgam-patterns module:</p>
-    <div class="example-background--svg--tgam"></div>
+      <div class="example-label">
+        <h2>tgam-patterns JPG background image</h2>
+      </div>
+      <div class="example-content background--jpg--tgam"></div>
 
-    <p>svg/use elements that pull in sprite symbols from the local project:</p>
+      <div class="example-label">
+        <h2>tgam-patterns SVG background image</h2>
+      </div>
+      <div class="example-content background--svg--tgam"></div>
 
-    <svg role="img" width="40" height="40">
-      <use xlink:href="<%= require('../images/icon-anchor.svg').symbol %>"></use>
-    </svg>
-    <svg role="img" width="40" height="40">
-      <use xlink:href="<%= require('../images/icon-code.svg').symbol %>"></use>
-    </svg>
-    <svg role="img" width="40" height="40">
-      <use xlink:href="<%= require('../images/icon-enlarge.svg').symbol %>"></use>
-    </svg>
-    <svg role="img" width="40" height="40">
-      <use xlink:href="<%= require('../images/icon-gear.svg').symbol %>"></use>
-    </svg>
+      <div class="example-label">
+        <h2>tgam-patterns sprite symbols (svg/use elements)</h2>
+        <p>(must import the SVGs into the JavaScript entry point or they won't appear here)</p>
+      </div>
+      <div class="example-content">
+        <svg role="img" width="40" height="40">
+          <use xlink:href="<%= require('tgam/images/icon-facebook.svg').symbol %>"></use>
+        </svg>
+        <svg role="img" width="40" height="40">
+          <use xlink:href="<%= require('tgam/images/icon-twitter.svg').symbol %>"></use>
+        </svg>
+      </div>
+    </div>
 
-    <p>Component from the pattern library:</p>
+    <h2>Component from the pattern library:</h2>
 
     <form class="c-form">
       <fieldset class="c-form__fieldset">
