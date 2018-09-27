@@ -31,7 +31,7 @@
       <div class="example-label">
         <h2>Local SVG background image (inline CSS)</h2>
       </div>
-      <div class="example-content background--svg--local--inline" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
+      <div class="example-content background--svg--inline" style="background-image: url(<%= require('../images/loader.svg').view %>)"></div>
 
       <div class="example-label">
         <h2>Local sprite symbols (svg/use elements)</h2>
@@ -56,8 +56,13 @@
       <div class="example-content background--svg--tgam"></div>
 
       <div class="example-label">
+        <h2>tgam-patterns SVG background image (inline CSS)</h2>
+      </div>
+      <div class="example-content background--svg--inline" style="background-image: url(<%= require('tgam/images/icon-snapchat.svg').view %>)"></div>
+
+      <div class="example-label">
         <h2>tgam-patterns sprite symbols (svg/use elements)</h2>
-        <p>(must import the SVGs into the JavaScript entry point or they won't appear here)</p>
+        <!-- <p>(must import SVGs into JavaScript entry point or they won't appear here)</p> -->
       </div>
       <div class="example-content">
         <svg role="img" width="40" height="40">

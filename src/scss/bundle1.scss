@@ -33,6 +33,11 @@ h1 {
   grid-column: 1 / 2;
   justify-self: center;
 }
+.background--svg--inline {
+  width: 40px;
+  height: 40px;
+  background-size: 40px auto;
+}
 .background--jpg--local {
   width: 100px;
   height: 100px;
@@ -43,11 +48,6 @@ h1 {
   width: 40px;
   height: 40px;
   background-image: url("../images/icon-gear.svg");
-  background-size: 40px auto;
-}
-.background--svg--local--inline {
-  width: 40px;
-  height: 40px;
   background-size: 40px auto;
 }
 .background--jpg--tgam {

@@ -102,7 +102,7 @@ module.exports = (env, argv) => {
           use: {
             loader: "external-svg-sprite-loader",
             options: {
-              name: "tgam-patterns/svgs/sprite.svg",
+              name: "tgam-patterns/svgs/tgam-sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
             }
           }
