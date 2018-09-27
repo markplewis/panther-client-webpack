@@ -17,6 +17,64 @@
     </p>
     <p>This page is standalone and does not use HtmlWebpackPlugin.</p>
 
+    <div class="examples">
+      <div class="example-label">
+        <h2>Local JPG background image</h2>
+      </div>
+      <div class="example-content background--jpg--local"></div>
+
+      <div class="example-label">
+        <h2>Local SVG background image</h2>
+      </div>
+      <div class="example-content background--svg--local"></div>
+
+      <div class="example-label">
+        <h2>Local SVG background image (inline CSS)</h2>
+      </div>
+      <div class="example-content background--svg--inline" style="background-image: url('/svgs/sprite.svg#view-loader')"></div>
+
+      <div class="example-label">
+        <h2>Local sprite symbols (svg/use elements)</h2>
+      </div>
+      <div class="example-content">
+        <svg role="img" width="40" height="40">
+          <use xlink:href="/svgs/sprite.svg#icon-anchor"></use>
+        </svg>
+        <svg role="img" width="40" height="40">
+          <use xlink:href="/svgs/sprite.svg#icon-code"></use>
+        </svg>
+      </div>
+
+      <div class="example-label">
+        <h2>tgam-patterns JPG background image</h2>
+      </div>
+      <div class="example-content background--jpg--tgam"></div>
+
+      <div class="example-label">
+        <h2>tgam-patterns SVG background image</h2>
+      </div>
+      <div class="example-content background--svg--tgam"></div>
+
+      <div class="example-label">
+        <h2>tgam-patterns SVG background image (inline CSS)</h2>
+      </div>
+      <div class="example-content background--svg--inline" style="background-image: url('/tgam-patterns/svgs/tgam-sprite.svg#view-icon-snapchat')"></div>
+
+      <div class="example-label">
+        <h2>tgam-patterns sprite symbols (svg/use elements)</h2>
+      </div>
+      <div class="example-content">
+        <svg role="img" width="40" height="40">
+          <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#icon-facebook"></use>
+        </svg>
+        <svg role="img" width="40" height="40">
+          <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#icon-twitter"></use>
+        </svg>
+      </div>
+    </div>
+
+    <h2>Component from the pattern library:</h2>
+
     <div class="c-accordion c-accordion--standard-buttons" aria-live="polite">
       <ul class="c-accordion__list c-accordion__list--level-0" id="list-0">
         <li class="c-accordion__item">
@@ -24,7 +82,7 @@
             <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button"> Canada </a>
             <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-0">
               <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                <use xlink:href="/tgam-patterns/svgs/sprite.svg#nav-arrow-down"></use>
+                <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
               </svg>
             </button>
           </div>
@@ -61,7 +119,7 @@
             <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button"> World </a>
             <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-1">
               <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                <use xlink:href="/tgam-patterns/svgs/sprite.svg#nav-arrow-down"></use>
+                <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
               </svg>
             </button>
           </div>
@@ -88,7 +146,7 @@
             <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button"> Business </a>
             <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-2">
               <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                <use xlink:href="/tgam-patterns/svgs/sprite.svg#nav-arrow-down"></use>
+                <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
               </svg>
             </button>
           </div>

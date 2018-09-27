@@ -1,13 +1,8 @@
+@import "./shared";
+
 @import "~tgam/stylesheets/settings.colors";
 
-@import "~tgam/stylesheets/generic";
-
-@import "~tgam/stylesheets/base";
-
 @import "~tgam/stylesheets/components.accordion";
-@import "~tgam/stylesheets/components.button";
-
-@import "./base";
 
 @media (min-width: 600px) {
   h1 {
