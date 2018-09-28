@@ -125,12 +125,12 @@ module.exports = (env, argv) => {
         filename: argv.mode === "development" ? "css/[name].css" : "css/[name]-[contenthash].css"
       }),
       // Duplicate this whole "new HtmlWebpackPlugin" block to configure a 2nd page
-      new HtmlWebpackPlugin({
-        inject: false,
-        hash: false,
-        template: "./src/templates/index.html",
-        filename: "index.html"
-      }),
+      // new HtmlWebpackPlugin({
+      //   inject: false,
+      //   hash: false,
+      //   template: "./src/templates/page2.html",
+      //   filename: "page2.html"
+      // }),
       new SvgStorePlugin(),
       new CopyWebpackPlugin([{
         from: "src/*.html",

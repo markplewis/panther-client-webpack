@@ -3,12 +3,12 @@
 @import "./shared";
 
 h1 {
-  font-family: "Notable-Regular", Courier, monospace;
+  font-family: "Pratt-BoldItalic", Courier, monospace;
   font-weight: normal;
   font-style: normal;
 }
 @media (min-width: 600px) {
   h1 {
-    color: $color-blue-400;
+    color: $color-red-300;
   }
 }

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sample app">
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.bundle1.css %>">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.bundle2.css %>">
   </head>
   <body>
     <div class="page">
-      <h1>Page 1 <span>(HtmlWebpackPlugin)</span></h1>
+      <h1>Page 2 <span>(HtmlWebpackPlugin)</span></h1>
       <p>
         <a href="/index.html">Page 1</a> |
         <a href="/page2.html">Page 2</a>
@@ -137,6 +137,6 @@
       </div>
     </div>
 
-    <script src="<%= htmlWebpackPlugin.files.chunks.bundle1.entry %>"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.bundle2.entry %>"></script>
   </body>
 </html>
