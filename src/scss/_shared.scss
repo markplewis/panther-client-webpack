@@ -1,3 +1,4 @@
+// TGAM styles
 @import "~tgam/stylesheets/generic";
 
 @import "~tgam/stylesheets/base";
@@ -6,6 +7,7 @@
 @import "~tgam/stylesheets/components.button";
 @import "~tgam/stylesheets/components.form";
 
+// Local fonts
 @font-face {
   font-family: "OpenSans-Regular";
   src: url("../fonts/opensans-regular.ttf") format("opentype");
@@ -62,30 +64,34 @@ h1 span {
   grid-column: 1 / 2;
   justify-self: center;
 }
-.svg-inline {
+.inline-svg {
   width: 40px;
   height: 40px;
   background-size: 40px auto;
 }
-.jpg-local {
+
+// Local assets
+.local-jpg {
   width: 100px;
   height: 100px;
   background-image: url("../images/cat.jpg");
   background-size: 100px auto;
 }
-.svg-local {
+.local-svg {
   width: 40px;
   height: 40px;
   background-image: url("../images/icon-gear.svg");
   background-size: 40px auto;
 }
-.jpg-tgam {
+
+// TGAM assets
+.tgam-jpg {
   width: 100px;
   height: 100px;
   background-image: url("~tgam/images/piano-regwall-photo.jpg");
   background-size: 100px auto;
 }
-.svg-tgam {
+.tgam-svg {
   width: 40px;
   height: 40px;
   background-image: url("~tgam/images/tgam-logo-leaf.svg");

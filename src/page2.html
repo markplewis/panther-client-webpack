@@ -16,22 +16,23 @@
         <a href="/page2.html">Page 2</a>
       </p>
       <p>This is a standard, static, standalone page that does not use HtmlWebpackPlugin.</p>
+      <p>Assets will fail to load when you run a production Webpack build because this page has no way of knowing what the names of the hashed file names will be.</p>
 
       <div class="examples">
         <div class="example-label">
           <h2>Local JPG background image</h2>
         </div>
-        <div class="example-content jpg-local"></div>
+        <div class="example-content local-jpg"></div>
 
         <div class="example-label">
           <h2>Local SVG background image</h2>
         </div>
-        <div class="example-content svg-local"></div>
+        <div class="example-content local-svg"></div>
 
         <div class="example-label">
           <h2>Local SVG background image (inline CSS)</h2>
         </div>
-        <div class="example-content svg-inline" style="background-image: url('/svgs/sprite.svg#view-loader')"></div>
+        <div class="example-content inline-svg" style="background-image: url('/svgs/sprite.svg#view-loader')"></div>
 
         <div class="example-label">
           <h2>Local sprite symbols (svg/use elements)</h2>
@@ -48,17 +49,17 @@
         <div class="example-label">
           <h2>tgam-patterns JPG background image</h2>
         </div>
-        <div class="example-content jpg-tgam"></div>
+        <div class="example-content tgam-jpg"></div>
 
         <div class="example-label">
           <h2>tgam-patterns SVG background image</h2>
         </div>
-        <div class="example-content svg-tgam"></div>
+        <div class="example-content tgam-svg"></div>
 
         <div class="example-label">
           <h2>tgam-patterns SVG background image (inline CSS)</h2>
         </div>
-        <div class="example-content svg-inline" style="background-image: url('/tgam-patterns/svgs/tgam-sprite.svg#view-icon-snapchat')"></div>
+        <div class="example-content inline-svg" style="background-image: url('/tgam-patterns/svgs/tgam-sprite.svg#view-icon-snapchat')"></div>
 
         <div class="example-label">
           <h2>tgam-patterns sprite symbols (svg/use elements)</h2>
