@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sample app">
-    <link rel="stylesheet" href="/css/bundle1.css">
+    <link rel="stylesheet" href="/css/bundle-1.css">
   </head>
   <body>
     <div class="page">
       <h1>Page 1 <span>(standalone)</span></h1>
       <p>
         <a href="/index.html">Page 1</a> |
-        <a href="/page2.html">Page 2</a>
+        <a href="/page-2.html">Page 2</a>
       </p>
       <p>This is a standard, static, standalone page that does not use HtmlWebpackPlugin.</p>
       <p>Assets will fail to load when you run a production Webpack build because this page has no way of knowing what the names of the hashed file names will be.</p>
@@ -138,6 +138,6 @@
       </div>
     </div>
 
-    <script src="/js/bundle1.js"></script>
+    <script src="/js/bundle-1.js"></script>
   </body>
 </html>

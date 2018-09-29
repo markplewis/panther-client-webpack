@@ -1,4 +1,4 @@
-import "../scss/bundle2.scss";
+import "../scss/bundle-2.scss";
 
 import nav from "./nav";
 

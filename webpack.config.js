@@ -33,8 +33,8 @@ module.exports = (env, argv) => {
     // See: https://webpack.js.org/configuration/stats/
     // stats: "verbose",
     entry: {
-      "bundle1": path.join(__dirname, "src/js/bundle1.js"),
-      "bundle2": path.join(__dirname, "src/js/bundle2.js")
+      "bundle-1": path.join(__dirname, "src/js/entry-point-1.js"),
+      "bundle-2": path.join(__dirname, "src/js/entry-point-2.js")
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -125,12 +125,12 @@ module.exports = (env, argv) => {
         filename: argv.mode === "development" ? "css/[name].css" : "css/[name]-[contenthash].css"
       }),
       // Duplicate this whole "new HtmlWebpackPlugin" block to configure a 2nd page
-      // new HtmlWebpackPlugin({
-      //   inject: false,
-      //   hash: false,
-      //   template: "./src/templates/page2.html",
-      //   filename: "page2.html"
-      // }),
+      new HtmlWebpackPlugin({
+        inject: false,
+        hash: false,
+        template: "./src/templates/page-2.html",
+        filename: "page-2.html"
+      }),
       new SvgStorePlugin(),
       new CopyWebpackPlugin([{
         from: "src/*.html",
