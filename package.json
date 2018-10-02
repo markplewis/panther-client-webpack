@@ -33,7 +33,7 @@
     "sass-loader": "^7.1.0",
     "string-replace-loader": "^2.1.1",
     "style-loader": "^0.23.0",
-    "tgam-patterns": "^4.0.0-alpha.2",
+    "tgam-patterns": "^4.0.0-alpha.3",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   }
