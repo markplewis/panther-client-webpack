@@ -57,9 +57,7 @@ module.exports = (env, argv) => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
+          loader: "babel-loader"
         },
         {
           test: /\.scss$/,
@@ -89,32 +87,28 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(png|jpe?g|gif|webp)$/,
-          use: fileLoaderConfig
+          use: [fileLoaderConfig]
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-          use: fileLoaderConfig
+          use: [fileLoaderConfig]
         },
         {
           test: /\.svg$/,
           include: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
-          use: {
-            loader: SvgStorePlugin.loader,
-            options: {
-              name: "tgam-patterns/svgs/tgam-sprite.svg",
-              iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
-            }
+          loader: SvgStorePlugin.loader,
+          options: {
+            name: "tgam-patterns/svgs/tgam-sprite.svg",
+            iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
           }
         },
         {
           test: /\.svg$/,
           include: path.resolve(__dirname, "src/images"),
-          use: {
-            loader: SvgStorePlugin.loader,
-            options: {
-              name: "svgs/sprite.svg",
-              iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
-            }
+          loader: SvgStorePlugin.loader,
+          options: {
+            name: "svgs/sprite.svg",
+            iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
           }
         }
       ]
