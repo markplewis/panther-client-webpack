@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-const SvgStorePlugin = require("external-svg-sprite-loader/lib/SvgStorePlugin");
+const SvgStorePlugin = require("external-svg-sprite-loader");
 
 module.exports = (env, argv) => {
 
@@ -99,7 +99,7 @@ module.exports = (env, argv) => {
           test: /\.svg$/,
           include: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
           use: {
-            loader: "external-svg-sprite-loader",
+            loader: SvgStorePlugin.loader,
             options: {
               name: "tgam-patterns/svgs/tgam-sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
@@ -110,7 +110,7 @@ module.exports = (env, argv) => {
           test: /\.svg$/,
           include: path.resolve(__dirname, "src/images"),
           use: {
-            loader: "external-svg-sprite-loader",
+            loader: SvgStorePlugin.loader,
             options: {
               name: "svgs/sprite.svg",
               iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
