@@ -11,30 +11,31 @@
     "dev:watch": "npm run webpack -- --mode development --watch",
     "serve": "http-server ./dist",
     "serve:prod": "npm run prod && npm run serve",
-    "serve:dev": "npm run dev && npm run serve"
+    "serve:dev": "npm run dev && npm run serve",
+    "check": "npx npm-check -s -u"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.2",
-    "clean-webpack-plugin": "^0.1.19",
+    "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "external-svg-sprite-loader": "^4.0.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
-    "mini-css-extract-plugin": "^0.4.4",
+    "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "string-replace-loader": "^2.1.1",
     "style-loader": "^0.23.1",
     "tgam-patterns": "^4.0.0-alpha.3",
-    "webpack": "^4.25.1",
+    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.0"
   }
 }
