@@ -31,10 +31,11 @@
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
+    "postcss-url": "^8.0.0",
     "sass-loader": "^7.1.0",
     "string-replace-loader": "^2.1.1",
     "style-loader": "^0.23.1",
-    "tgam-patterns": "^4.0.0-alpha.3",
+    "tgam-patterns": "github:globeandmail/ux-pattern-library#ARC-4446",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.0"
   }

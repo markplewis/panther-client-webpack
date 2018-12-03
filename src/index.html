@@ -17,6 +17,7 @@
       </p>
       <p>This is a standard, static, standalone page that does not use HtmlWebpackPlugin.</p>
       <p>Assets will fail to load when you run a production Webpack build because this page has no way of knowing what the names of the hashed file names will be.</p>
+      <p><strong>Note</strong>: You may need to empty your cache and hard-reload after running a new build to see the changes.</p>
 
       <div class="examples">
         <div class="example-label">
@@ -32,17 +33,17 @@
         <div class="example-label">
           <h2>Local SVG background image (inline CSS)</h2>
         </div>
-        <div class="example-content inline-svg" style="background-image: url('/svgs/sprite.svg#view-loader')"></div>
+        <div class="example-content inline-svg" style="background-image: url('/sprites/main.svg#view-loader')"></div>
 
         <div class="example-label">
           <h2>Local sprite symbols (svg/use elements)</h2>
         </div>
         <div class="example-content">
           <svg role="img" width="40" height="40">
-            <use xlink:href="/svgs/sprite.svg#icon-anchor"></use>
+            <use xlink:href="/sprites/main.svg#icon-anchor"></use>
           </svg>
           <svg role="img" width="40" height="40">
-            <use xlink:href="/svgs/sprite.svg#icon-code"></use>
+            <use xlink:href="/sprites/main.svg#icon-code"></use>
           </svg>
         </div>
 
@@ -59,17 +60,17 @@
         <div class="example-label">
           <h2>tgam-patterns SVG background image (inline CSS)</h2>
         </div>
-        <div class="example-content inline-svg" style="background-image: url('/tgam-patterns/svgs/tgam-sprite.svg#view-icon-snapchat')"></div>
+        <div class="example-content inline-svg" style="background-image: url('/tgam-patterns/sprites/tgam.svg#view-play-button')"></div>
 
         <div class="example-label">
           <h2>tgam-patterns sprite symbols (svg/use elements)</h2>
         </div>
         <div class="example-content">
           <svg role="img" width="40" height="40">
-            <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#icon-facebook"></use>
+            <use xlink:href="/tgam-patterns/sprites/tgam.svg#search-icon-dark"></use>
           </svg>
           <svg role="img" width="40" height="40">
-            <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#icon-twitter"></use>
+            <use xlink:href="/tgam-patterns/sprites/tgam.svg#twitter"></use>
           </svg>
         </div>
       </div>
@@ -95,7 +96,7 @@
               <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button">Canada</a>
               <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-0">
                 <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                  <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
+                  <use xlink:href="/tgam-patterns/sprites/tgam.svg#plus-icon"></use>
                 </svg>
               </button>
             </div>
@@ -117,7 +118,7 @@
               <a href="#" class="c-accordion__item-link c-accordion__item-link--beside-button">World</a>
               <button class="c-button c-button--icon-only c-button--no-border c-button--no-border-radius" type="button" aria-label="Open subcategories" aria-expanded="false" aria-controls="list-0-1">
                 <svg class="c-button__icon" role="img" pointer-events="none" focusable="false" aria-hidden="true">
-                  <use xlink:href="/tgam-patterns/svgs/tgam-sprite.svg#nav-arrow-down"></use>
+                  <use xlink:href="/tgam-patterns/sprites/tgam.svg#plus-icon"></use>
                 </svg>
               </button>
             </div>
