@@ -154,6 +154,11 @@ module.exports = (env, argv) => {
         from: "src/*.html",
         to: "[name].html",
         force: true
+      }]),
+      new CopyWebpackPlugin([{
+        from: "src/favicon.ico",
+        to: "[name].ico",
+        force: true
       }])
     ]
   }
