@@ -7,28 +7,6 @@ const SvgStorePlugin = require("external-svg-sprite-loader");
 
 module.exports = (env, argv) => {
 
-  // Rewrite the resolved asset file path and tell Webpack where to save the files
-  const fileLoaderConfig = {
-    loader: "file-loader",
-    options: {
-      name: file => {
-        let pieces;
-        let trimmed;
-        if (file.includes("/node_modules/tgam-patterns/assets/patterns/")) {
-          pieces = file.replace(path.join(__dirname, "node_modules/tgam-patterns/assets/patterns/"), "").split(".");
-          pieces.pop();
-          trimmed = pieces.join(".");
-          return argv.mode === "development" ? `tgam-patterns/${trimmed}.[ext]` : `tgam-patterns/${trimmed}-[hash].[ext]`;
-        } else {
-          pieces = file.replace(path.join(__dirname, "src/"), "").split(".");
-          pieces.pop();
-          trimmed = pieces.join(".");
-          return argv.mode === "development" ? `${trimmed}.[ext]` : `${trimmed}-[hash].[ext]`;
-        }
-      }
-    }
-  };
-
   return {
     // See: https://webpack.js.org/configuration/stats/
     // stats: "verbose",
@@ -44,22 +22,30 @@ module.exports = (env, argv) => {
     // See: https://webpack.js.org/configuration/resolve
     resolve: {
       alias: {
-        // Make it easier to @import tgam-patterns styles into this project's SASS files
-        "tgam": "tgam-patterns/assets/patterns",
-        // Once "string-replace-loader" has run, the asset paths will start
-        // with "./tgam-replaced" instead of "~assets/patterns", so we'll need
-        // to make them resolve properly
-        "./tgam-replaced": path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns")
+        // Make it easier to @import "tgam-patterns" styles into our SASS files
+        "tgam": path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
+        // Because the "~" character has special meaning for Webpack,
+        // we must replace "~patterns" with a different unique identifier
+        // (i.e. "tgam-placeholder") in order for the "tgam-patterns" SASS file
+        // asset paths to resolve (i.e. fonts and images, etc.). This can be
+        // done via "string-replace-loader" or "postcss-url" (see below).
+        "./tgam-placeholder": path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
       }
     },
     module: {
       rules: [
         {
+          // JavaScript files
           test: /\.js$/,
-          exclude: /node_modules/,
+          // exclude: /node_modules/,
+          include: [
+            path.resolve(__dirname, "src/js"),
+            path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
+          ],
           loader: "babel-loader"
         },
         {
+          // SASS files
           test: /\.scss$/,
           use: [
             "style-loader",
@@ -69,16 +55,17 @@ module.exports = (env, argv) => {
               options: { sourceMap: true }
             },
             "postcss-loader",
-            {
-              // Replace the first part of the asset file path so that
-              // it can be resolved (see the "resolve" config above)
-              loader: "string-replace-loader",
-              options: {
-                search: "~assets/patterns", 
-                replace: "tgam-replaced",
-                flags: "g"
-              }
-            },
+            // Replace the first part of the asset file path so that it can be
+            // resolved (see the "resolve" config above). Alternatively, this
+            // can be done via the "postcss-url" plugin (see "postcss.config.js")
+            // {
+            //   loader: "string-replace-loader",
+            //   options: {
+            //     search: "~patterns", 
+            //     replace: "tgam-placeholder",
+            //     flags: "g"
+            //   }
+            // },
             {
               loader: "sass-loader",
               options: { sourceMap: true }
@@ -86,28 +73,62 @@ module.exports = (env, argv) => {
           ]
         },
         {
+          // Image files within the "src" directory
           test: /\.(png|jpe?g|gif|webp)$/,
-          use: [fileLoaderConfig]
+          include: path.resolve(__dirname, "src"),
+          loader: "file-loader",
+          options: {
+            name: argv.mode === "development" ? "[path][name].[ext]" : "[path][name]-[hash].[ext]",
+            context: "src"
+          }
         },
         {
+          // Image files within the "tgam-patterns" package
+          test: /\.(png|jpe?g|gif|webp)$/,
+          include: path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
+          loader: "file-loader",
+          options: {
+            name: argv.mode === "development" ? "tgam-patterns/[path][name].[ext]" : "tgam-patterns/[path][name]-[hash].[ext]",
+            context: "node_modules/tgam-patterns/patterns"
+          }
+        },
+        {
+          // Font files within the "src" directory
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-          use: [fileLoaderConfig]
+          include: path.resolve(__dirname, "src"),
+          loader: "file-loader",
+          options: {
+            name: argv.mode === "development" ? "[path][name].[ext]" : "[path][name]-[hash].[ext]",
+            context: "src"
+          }
         },
         {
+          // Font files within the "tgam-patterns" package
+          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+          include: path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
+          loader: "file-loader",
+          options: {
+            name: argv.mode === "development" ? "tgam-patterns/[path][name].[ext]" : "tgam-patterns/[path][name]-[hash].[ext]",
+            context: "node_modules/tgam-patterns/patterns"
+          }
+        },
+        {
+          // SVG files within the "src" directory
           test: /\.svg$/,
-          include: path.resolve(__dirname, "node_modules/tgam-patterns/assets/patterns/images"),
+          include: path.resolve(__dirname, "src"),
           loader: SvgStorePlugin.loader,
           options: {
-            name: "tgam-patterns/svgs/tgam-sprite.svg",
+            name: "sprites/main.svg",
             iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
           }
         },
         {
+          // SVG files within the "tgam-patterns" package
           test: /\.svg$/,
-          include: path.resolve(__dirname, "src/images"),
+          include: path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
           loader: SvgStorePlugin.loader,
           options: {
-            name: "svgs/sprite.svg",
+            name: "tgam-patterns/sprites/tgam.svg",
             iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
           }
         }
