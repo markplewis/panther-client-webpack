@@ -37,11 +37,6 @@ module.exports = (env, argv) => {
         {
           // JavaScript files
           test: /\.js$/,
-          // exclude: /node_modules/,
-          include: [
-            path.resolve(__dirname, "src/js"),
-            path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
-          ],
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"]

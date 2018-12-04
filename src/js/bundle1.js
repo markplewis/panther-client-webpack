@@ -22,3 +22,8 @@ import nav from "./nav";
 nav.init();
 
 console.log("Hello, I'm bundle 1");
+
+const arrowFunction = () => {
+  console.log("Arrow function called");
+};
+arrowFunction();
