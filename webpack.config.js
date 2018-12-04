@@ -42,7 +42,10 @@ module.exports = (env, argv) => {
             path.resolve(__dirname, "src/js"),
             path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
           ],
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
         },
         {
           // SASS files
