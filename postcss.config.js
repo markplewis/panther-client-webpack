@@ -6,7 +6,7 @@ module.exports = {
     // can be done via the "string-replace-loader" Webpack loader.
     require("postcss-url")({
       url: asset => {
-        return asset.url.replace("~patterns", "tgam-placeholder");
+        return asset.url.replace("~patterns", "tgam-asset");
       }
     })
   ]

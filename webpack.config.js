@@ -26,10 +26,10 @@ module.exports = (env, argv) => {
         "tgam": path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
         // Because the "~" character has special meaning for Webpack,
         // we must replace "~patterns" with a different unique identifier
-        // (i.e. "tgam-placeholder") in order for the "tgam-patterns" SASS file
+        // (i.e. "tgam-asset") in order for the "tgam-patterns" SASS file
         // asset paths to resolve (i.e. fonts and images, etc.). This can be
         // done via "string-replace-loader" or "postcss-url" (see below).
-        "./tgam-placeholder": path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
+        "./tgam-asset": path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
       }
     },
     module: {
@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
             //   loader: "string-replace-loader",
             //   options: {
             //     search: "~patterns", 
-            //     replace: "tgam-placeholder",
+            //     replace: "tgam-asset",
             //     flags: "g"
             //   }
             // },
