@@ -1,11 +1,11 @@
 // TGAM styles
-@import "~tgam/stylesheets/generic";
+@import "panther/stylesheets/generic";
 
-@import "~tgam/stylesheets/base";
+@import "panther/stylesheets/base";
 
-@import "~tgam/stylesheets/components.accordion";
-@import "~tgam/stylesheets/components.button";
-@import "~tgam/stylesheets/components.form";
+@import "panther/stylesheets/components.accordion";
+@import "panther/stylesheets/components.button";
+@import "panther/stylesheets/components.form";
 
 // Local fonts
 @font-face {
@@ -74,16 +74,16 @@ h1 span {
   background-size: 40px auto;
 }
 
-// TGAM assets
-.tgam-jpg {
+// Panther assets
+.panther-jpg {
   width: 100px;
   height: 100px;
-  background-image: url("~tgam/images/piano-regwall-photo.jpg");
+  background-image: url("panther/images/piano-regwall-photo.jpg");
   background-size: 100px auto;
 }
-.tgam-svg {
+.panther-svg {
   width: 40px;
   height: 40px;
-  background-image: url("~tgam/images/tgam-logo-leaf.svg");
+  background-image: url("panther/images/tgam-logo-leaf.svg");
   background-size: 40px auto;
 }

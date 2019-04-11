@@ -8,10 +8,10 @@ import "../scss/bundle1.scss";
 // because they (and the assets they reference) get processed by Webpack's
 // various loaders.
 
-import "tgam/images/search-icon-dark.svg";
-import "tgam/images/play-button.svg";
-import "tgam/images/twitter.svg";
-import "tgam/images/plus-icon.svg";
+import "panther/images/search-icon-dark.svg";
+import "panther/images/play-button.svg";
+import "panther/images/twitter.svg";
+import "panther/images/plus-icon.svg";
 
 import "../images/icon-anchor.svg";
 import "../images/icon-code.svg";

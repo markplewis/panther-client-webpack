@@ -1,6 +1,6 @@
 import "../scss/bundle2.scss";
 
-import dialog from "tgam/javascripts/modal-dialog.js";
+import dialog from "panther/javascripts/modal-dialog.js";
 
 import nav from "./nav";
 

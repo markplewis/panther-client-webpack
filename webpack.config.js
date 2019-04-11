@@ -6,6 +6,7 @@ const path = require("path");
 const SvgStorePlugin = require("external-svg-sprite-loader");
 
 module.exports = (env, argv) => {
+  const isDev = argv.mode === "development";
 
   return {
     // See: https://webpack.js.org/configuration/stats/
@@ -17,19 +18,13 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, "dist"),
       publicPath: "/",
-      filename: argv.mode === "development" ? "js/[name].js" : "js/[name]-[chunkhash].js"
+      filename: isDev ? "js/[name].js" : "js/[name].[contenthash].js"
     },
     // See: https://webpack.js.org/configuration/resolve
     resolve: {
       alias: {
-        // Make it easier to @import "tgam-patterns" styles into our SASS files
-        "tgam": path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
-        // Because the "~" character has special meaning for Webpack,
-        // we must replace "~patterns" with a different unique identifier
-        // (i.e. "tgam-asset") in order for the "tgam-patterns" SASS file
-        // asset paths to resolve (i.e. fonts and images, etc.). This can be
-        // done via "string-replace-loader" or "postcss-url" (see below).
-        "./tgam-asset": path.resolve(__dirname, "node_modules/tgam-patterns/patterns")
+        // Make it easier to import Panther styles into our SASS and JS files
+        "./panther": path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
       }
     },
     module: {
@@ -52,15 +47,17 @@ module.exports = (env, argv) => {
               loader: "css-loader",
               options: { sourceMap: true }
             },
+            // Because the "~" character has special meaning for Webpack,
+            // we must replace "~patterns" with a different unique identifier
+            // (i.e. "panther") in order for the Panther SASS file asset paths
+            // to resolve (i.e. fonts, images and SVGs). This can be done via
+            // "string-replace-loader" or "postcss-url" (see "postcss.config.js")
             "postcss-loader",
-            // Replace the first part of the asset file path so that it can be
-            // resolved (see the "resolve" config above). Alternatively, this
-            // can be done via the "postcss-url" plugin (see "postcss.config.js")
             // {
             //   loader: "string-replace-loader",
             //   options: {
             //     search: "~patterns", 
-            //     replace: "tgam-asset",
+            //     replace: "panther",
             //     flags: "g"
             //   }
             // },
@@ -76,7 +73,7 @@ module.exports = (env, argv) => {
           include: path.resolve(__dirname, "src"),
           loader: "file-loader",
           options: {
-            name: argv.mode === "development" ? "[path][name].[ext]" : "[path][name]-[hash].[ext]",
+            name: isDev ? "[path][name].[ext]" : "[path][name].[hash].[ext]",
             context: "src"
           }
         },
@@ -86,7 +83,7 @@ module.exports = (env, argv) => {
           include: path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
           loader: "file-loader",
           options: {
-            name: argv.mode === "development" ? "tgam-patterns/[path][name].[ext]" : "tgam-patterns/[path][name]-[hash].[ext]",
+            name: isDev ? "panther/[path][name].[ext]" : "panther/[path][name].[hash].[ext]",
             context: "node_modules/tgam-patterns/patterns"
           }
         },
@@ -96,7 +93,7 @@ module.exports = (env, argv) => {
           include: path.resolve(__dirname, "src"),
           loader: "file-loader",
           options: {
-            name: argv.mode === "development" ? "[path][name].[ext]" : "[path][name]-[hash].[ext]",
+            name: isDev ? "[path][name].[ext]" : "[path][name].[hash].[ext]",
             context: "src"
           }
         },
@@ -106,7 +103,7 @@ module.exports = (env, argv) => {
           include: path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
           loader: "file-loader",
           options: {
-            name: argv.mode === "development" ? "tgam-patterns/[path][name].[ext]" : "tgam-patterns/[path][name]-[hash].[ext]",
+            name: isDev ? "panther/[path][name].[ext]" : "panther/[path][name].[hash].[ext]",
             context: "node_modules/tgam-patterns/patterns"
           }
         },
@@ -117,7 +114,7 @@ module.exports = (env, argv) => {
           loader: SvgStorePlugin.loader,
           options: {
             name: "sprites/main.svg",
-            iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
+            iconName: isDev ? "[name]" : "[name]-[hash:5]"
           }
         },
         {
@@ -126,16 +123,16 @@ module.exports = (env, argv) => {
           include: path.resolve(__dirname, "node_modules/tgam-patterns/patterns"),
           loader: SvgStorePlugin.loader,
           options: {
-            name: "tgam-patterns/sprites/tgam.svg",
-            iconName: argv.mode === "development" ? "[name]" : "[name]-[hash:5]"
+            name: "panther/sprites/tgam.svg",
+            iconName: isDev ? "[name]" : "[name]-[hash:5]"
           }
         }
       ]
     },
     plugins: [
-      new CleanWebpackPlugin("dist", {}),
+      new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: argv.mode === "development" ? "css/[name].css" : "css/[name]-[contenthash].css"
+        filename: isDev ? "css/[name].css" : "css/[name].[contenthash].css"
       }),
       // Duplicate this whole "new HtmlWebpackPlugin" block to configure a 2nd page
       new HtmlWebpackPlugin({
